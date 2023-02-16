@@ -162,6 +162,7 @@ async def _upload_file(client, message, reply, filename, filepath, force_documen
     try:
         ss = ''
         ps = ''
+        xx2 = ''
         if newFile is not None:
             regcheck = re.match('.*{(.*)}$', newFile)
             if regcheck is not None:
@@ -174,11 +175,14 @@ async def _upload_file(client, message, reply, filename, filepath, force_documen
                     ps = ('0'*(sr-len(str(count))))+(str(count))
                 if ('s' or 'S') in sds[0]:
                     ss = ' '+('0'*(sr-len(str(count))))+(str(count))
+                if ('x2' or 'X2') in sds[0]:
+                    xx2 = 'S2 - '
+                
             newFile = re.sub(r'{.*}$', '', newFile)
             nf = newFile.split('.')
             file_ext = nf.pop().strip()
             newFile = '.'.join(nf).strip()
-            newFileName = os.path.dirname(filepath)+'/'+'('+ps+')'+' '+newFile+ss+'.'+file_ext
+            newFileName = os.path.dirname(filepath)+'/'+'('+xx2+ps+')'+' '+newFile+ss+'.'+file_ext
             os.rename(filepath, newFileName)
             filepath = newFileName
         with tempfile.TemporaryDirectory(dir=str(user_id)) as tempdir:
