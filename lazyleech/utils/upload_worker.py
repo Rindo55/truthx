@@ -178,7 +178,7 @@ async def _upload_file(client, message, reply, filename, filepath, force_documen
             nf = newFile.split('.')
             file_ext = nf.pop().strip()
             newFile = '.'.join(nf).strip()
-            newFileName = os.path.dirname(filepath)+'/'+'('+ps+')'+ newFile+ss+'.'+file_ext
+            newFileName = os.path.dirname(filepath)+'/'+'('+ps+')'+' '+newFile+ss+'.'+file_ext
             os.rename(filepath, newFileName)
             filepath = newFileName
         with tempfile.TemporaryDirectory(dir=str(user_id)) as tempdir:
