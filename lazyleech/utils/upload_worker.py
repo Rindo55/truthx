@@ -187,6 +187,7 @@ async def _upload_file(client, message, reply, filename, filepath, force_documen
             file_ext = nf.pop().strip()
             newFile = '.'.join(nf).strip()
             newFileName = os.path.dirname(filepath)+'/'+'('+xx2+ps+')'+' '+newFile+ss+'.'+file_ext
+            kaze = '('+xx2+ps+')'+' '+newFile+ss+'
             os.rename(filepath, newFileName)
             filepath = newFileName
         with tempfile.TemporaryDirectory(dir=str(user_id)) as tempdir:
@@ -257,12 +258,12 @@ async def _upload_file(client, message, reply, filename, filepath, force_documen
                                         break
                             else:
                                 width = height = 0
-                            resp = await reply.reply_video(filepath, thumb=thumbnail, caption=filename,
+                            resp = await reply.reply_video(filepath, thumb=thumbnail, caption=kaze,
                                                            duration=duration, width=width, height=height,
                                                            parse_mode=None, progress=progress_callback,
                                                            progress_args=progress_args)
                         else:
-                            resp = await reply.reply_document(filepath, thumb=thumbnail, caption=filename,
+                            resp = await reply.reply_document(filepath, thumb=thumbnail, caption=kaze,
                                                               parse_mode=None, progress=progress_callback,
                                                               progress_args=progress_args)
                     except StopTransmission:
