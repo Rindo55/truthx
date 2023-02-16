@@ -175,6 +175,8 @@ async def _upload_file(client, message, reply, filename, filepath, force_documen
                     sr = int(sds[2])
                 if ('p' or 'P') in sds[1]:
                     ps = ('0'*(sr-len(str(count))))+(str(count))
+                if ('p' or 'P') in sds[0]:
+                    ps = ('0'*(sr-len(str(count))))+(str(count))
                 if ('s' or 'S') in sds[0]:
                     ss = ' '+('0'*(sr-len(str(count))))+(str(count))
                 if ('x2' or 'X2') in sds[0]:
