@@ -169,7 +169,7 @@ async def _upload_file(client, message, reply, filename, filepath, force_documen
                 sd = str(regcheck.groups()[0])
                 sds = sd.split(',')
                 sr = 3
-                if len(sds)==2:
+                if len(sds)==3:
                     sr = int(sds[2])
                 if ('p' or 'P') in sds[1]:
                     ps = ('0'*(sr-len(str(count))))+(str(count))
