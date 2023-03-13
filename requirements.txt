@@ -14,3 +14,6 @@ youtube-search-python
 ujson
 git+https://github.com/ytdl-org/youtube-dl
 html-telegraph-poster>=0.2.31
+opencv-python-headless
+aiofiles
+python-dotenv
