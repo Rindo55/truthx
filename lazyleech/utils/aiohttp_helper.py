@@ -30,11 +30,11 @@ class AioHttp:
         try:
             if session and not session.closed:
                 return await AioHttp._request(
-                    mode=mode, session=session, link=link, params=params, trust_env=False
+                    mode=mode, session=session, link=link, params=params, trust_env=True
                 )
             async with AioHttp.get_session() as xsession:
                 return await AioHttp._request(
-                    mode=mode, session=xsession, link=link, params=params, trust_env=False
+                    mode=mode, session=xsession, link=link, params=params, trust_env=True
                 )
         except asyncio.TimeoutError:
             print("Timeout! the site didn't responded in time.")
