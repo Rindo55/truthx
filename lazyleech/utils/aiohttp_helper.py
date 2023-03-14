@@ -18,7 +18,7 @@ from aiohttp import ClientSession, ClientTimeout
 class AioHttp:
     @staticmethod
     def get_session() -> ClientSession:
-        return ClientSession(json_serialize=ujson.dumps)
+        return ClientSession(json_serialize=ujson.dumps, trust_env=True)
 
     @staticmethod
     async def _manage_session(
@@ -30,11 +30,11 @@ class AioHttp:
         try:
             if session and not session.closed:
                 return await AioHttp._request(
-                    mode=mode, session=session, link=link, params=params
+                    mode=mode, session=session, link=link, params=params, trust_env=False
                 )
             async with AioHttp.get_session() as xsession:
                 return await AioHttp._request(
-                    mode=mode, session=xsession, link=link, params=params
+                    mode=mode, session=xsession, link=link, params=params, trust_env=False
                 )
         except asyncio.TimeoutError:
             print("Timeout! the site didn't responded in time.")
